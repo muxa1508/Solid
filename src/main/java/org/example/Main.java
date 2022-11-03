@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        HashMap<String, Integer> products = new HashMap<>();
+        Map<String, Integer> products = new HashMap<>();    //1.
         products.put("Хлеб", 56);
         products.put("Масло", 153);
         products.put("Колбаса", 211);
@@ -20,7 +20,7 @@ public class Main {
 
         System.out.println("Введите два слова: название товара и количество. Или end");
         Scanner scanner = new Scanner(System.in);
-        Purchase purchase = new Purchase();
+        Purchase purchase = new Purchase(products.size());      //2.
         while (true) {
             String line = scanner.nextLine();
             if ("end".equals(line)) break;

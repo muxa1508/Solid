@@ -3,22 +3,17 @@ package org.example;
 import java.util.Map;
 
 public class Purchase {
-    protected String title;
-    protected int count;
-    protected Purchase[] purchases = new Purchase[4];
 
-    public Purchase(String title, int count) {
-        this.title = title;
-        this.count = count;
-    }
+    protected Item[] purchases;     //3.
 
-    public Purchase() {
+    public Purchase(int size) {
+        this.purchases= new Item[size];     //2.
     }
 
     public void addPurchase(String title, int count) {
         for (int i = 0; i < purchases.length; i++) {
             if (purchases[i] == null) {
-                purchases[i] = new Purchase(title, count);
+                purchases[i] = new Item(title, count);
                 return;
             }
             if (purchases[i].title.equals(title)) {
@@ -32,7 +27,7 @@ public class Purchase {
         long sum = 0;
         System.out.println("КОРЗИНА:");
         for (int i = 0; i < purchases.length; i++) {
-            Purchase purchase = purchases[i];
+            Item purchase = purchases[i];
             if (purchase == null) continue;
             System.out.println("\t" + purchase.title + " " + purchase.count + " шт. в сумме " + (purchase.count * prices.get(purchase.title)) + " руб.");
             sum += purchase.count * prices.get(purchase.title);
